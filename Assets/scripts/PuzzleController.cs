@@ -186,6 +186,9 @@ public class PuzzleController : MonoBehaviour
         if (!acceptingInput || isShowing)
             return;
 
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayClick();
+
         if (sequence[inputIndex] == index)
         {
             inputIndex++;

@@ -53,6 +53,9 @@ public class PlayerInteractor : MonoBehaviour
 
     private void OnGUI()
     {
+        if (StartScreen.IsShowing || GameOverScreen.IsShowing)
+            return;
+
         if (!showPrompt)
             return;
 

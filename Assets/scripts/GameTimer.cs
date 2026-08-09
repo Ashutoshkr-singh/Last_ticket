@@ -1,13 +1,13 @@
 using UnityEngine;
 
-// One minute to reach the yellow seat. Once the ticket is in hand, loitering
+// Two minutes to reach the yellow seat. Once the ticket is in hand, loitering
 // makes the clock burn down much faster.
 public class GameTimer : MonoBehaviour
 {
     public static GameTimer Instance { get; private set; }
 
     [Header("Timer")]
-    public float totalTime = 180f;
+    public float totalTime = 120f;
 
     [Header("Idle Penalty")]
     public float idleThreshold = 2f;
@@ -97,6 +97,10 @@ public class GameTimer : MonoBehaviour
 
     private void OnGUI()
     {
+        // The scare owns the screen; the clock must not sit on top of it.
+        if (StartScreen.IsShowing || GameOverScreen.IsShowing || Jumpscare.IsPlaying)
+            return;
+
         int minutes = Mathf.FloorToInt(Mathf.Max(0f, remaining) / 60f);
         int seconds = Mathf.FloorToInt(Mathf.Max(0f, remaining) % 60f);
         string label = string.Format("{0:00}:{1:00}", minutes, seconds);

@@ -216,6 +216,9 @@ GameObject:
   - component: {fileID: 11211437}
   - component: {fileID: 11211436}
   - component: {fileID: 11211438}
+  - component: {fileID: 11211439}
+  - component: {fileID: 11211441}
+  - component: {fileID: 11211440}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -235,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da03add93df0694499007e7ac6a9304a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverScreen
+  endScreen: {fileID: 21300000, guid: 21800434113b71a459d6fa0c8b570c97, type: 3}
 --- !u!4 &11211437
 Transform:
   m_ObjectHideFlags: 0
@@ -262,12 +266,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e223ac7b0c03e48970c4cefb3a669c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  totalTime: 180
+  totalTime: 120
   idleThreshold: 2
   idleDrainMultiplier: 4
   idleMoveEpsilon: 0.06
   goalSeat: {fileID: 1780699558}
   goalRadius: 2.2
+--- !u!114 &11211439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11211435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42d2fa60dab2ba449a283a4de248142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  footsteps: {fileID: 8300000, guid: 788716d1468f2da4881752b8581555d3, type: 3}
+  ghostBreath: {fileID: 8300000, guid: ce288482d3d9e904fbdd938c9d8549fd, type: 3}
+  uiClick: {fileID: 8300000, guid: 8a2c4b4a6fd995c44b09ca84577bdf36, type: 3}
+  doorChime: {fileID: 8300000, guid: 16450d0b042d0b249a7e84d58599814a, type: 3}
+  jumpscare: {fileID: 8300000, guid: bc3257be901e8984982a4f0a23826495, type: 3}
+  darkImpact: {fileID: 8300000, guid: 52b4f67ae607a4b489aa3b891011b04f, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 325e215afa7058d4eada908801c605c6, type: 3}
+  footstepVolume: 0.45
+  ghostVolume: 0.6
+  sfxVolume: 0.8
+  musicVolume: 0.5
+  walkPitch: 0.78
+  runPitch: 1.18
+  minGapAfterBreath: 12
+  maxGapAfterBreath: 26
+--- !u!114 &11211440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11211435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad5d214e9665934dab8f40ac438af7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartScreen
+  titleImage: {fileID: 21300000, guid: 534dc0a1c8addde4c923275e52fc1675, type: 3}
+--- !u!114 &11211441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11211435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125e2b0a543648e469e50f164ae969cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Jumpscare
+  face: {fileID: 21300000, guid: 9717fba552a309f48bc1ae19b977fad1, type: 3}
+  duration: 1.5
+  punchInScale: 1.25
+  shakeAmplitude: 0.22
+  shakeFrequency: 42
+  rollAmplitude: 5.5
 --- !u!1 &12669341 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -9153999733371084800, guid: 8ab09f361ddcbbe44b412652f5d61944, type: 3}
@@ -693,6 +755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.5514026
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -899,6 +962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3
+  steadyIntensity: 2.2
   flickerSpeed: 3.9111953
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -1259,7 +1323,7 @@ Transform:
   m_GameObject: {fileID: 97575090}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5113748, y: 0.48836046, z: 0.48836046, w: 0.51137465}
-  m_LocalPosition: {x: -4.6503286, y: -0.00000017881393, z: -6.7933817}
+  m_LocalPosition: {x: -4.6503286, y: -0.63, z: -6.7933817}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1610,6 +1674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3
+  steadyIntensity: 2.2
   flickerSpeed: 3.9628048
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -2221,6 +2286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.5448508
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -3007,6 +3073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3
+  steadyIntensity: 2.2
   flickerSpeed: 3.4792247
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -3154,6 +3221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.5066075
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -3301,6 +3369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.4807038
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -3508,7 +3577,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 326276478}
-  - component: {fileID: 326276477}
+  - component: {fileID: 326276479}
   m_Layer: 0
   m_Name: Blocker_Kiosk2
   m_TagString: Untagged
@@ -3516,7 +3585,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &326276477
+--- !u!4 &326276478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326276476}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.85, y: -0.15, z: -21.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &326276479
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3535,23 +3619,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.6, y: 2.4, z: 0.3}
+  m_Size: {x: 9.7, y: 4.7, z: 0.4}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &326276478
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326276476}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.3, y: 0.3, z: -21.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &326994606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4816407508810189604, guid: 8ab09f361ddcbbe44b412652f5d61944, type: 3}
@@ -3745,6 +3814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.8054314
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -4088,6 +4158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.8383417
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -4344,6 +4415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.8900118
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -4660,6 +4732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3
+  steadyIntensity: 2.2
   flickerSpeed: 3.7043371
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -5480,6 +5553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.5891085
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -5627,6 +5701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.7808623
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -6629,6 +6704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3
+  steadyIntensity: 2.2
   flickerSpeed: 4.0518637
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -7771,6 +7847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3
+  steadyIntensity: 2.2
   flickerSpeed: 3.5219162
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -9423,6 +9500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 4.626468
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -9713,6 +9791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3
+  steadyIntensity: 2.2
   flickerSpeed: 3.572336
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -11841,6 +11920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3
+  steadyIntensity: 2.2
   flickerSpeed: 4.906005
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -11959,6 +12039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 4.275715
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -12380,6 +12461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.8084073
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -12525,6 +12607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 4.8225346
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -12755,6 +12838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.5169601
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -13262,6 +13346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.4919426
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -14050,6 +14135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 4.7674665
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -14939,6 +15025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 4.0453043
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -15057,6 +15144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3
+  steadyIntensity: 2.2
   flickerSpeed: 3.921661
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -15584,6 +15672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 4.483918
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -15845,6 +15934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.97183
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -16520,6 +16610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3
+  steadyIntensity: 2.2
   flickerSpeed: 3.4446657
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -16756,6 +16847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 3.9047303
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -16901,6 +16993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3
+  steadyIntensity: 2.2
   flickerSpeed: 4.1716948
   smoothing: 14
   blackoutChancePerSecond: 0.05
@@ -17557,6 +17650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlickeringLight
   minIntensity: 0
   maxIntensity: 3.6
+  steadyIntensity: 2.7
   flickerSpeed: 4.650667
   smoothing: 14
   blackoutChancePerSecond: 0.05

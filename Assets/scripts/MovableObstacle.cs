@@ -50,6 +50,9 @@ public class MovableObstacle : MonoBehaviour
 
     private void OnGUI()
     {
+        if (StartScreen.IsShowing || GameOverScreen.IsShowing)
+            return;
+
         if (!PlayerInRange())
             return;
 

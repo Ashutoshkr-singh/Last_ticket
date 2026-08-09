@@ -176,6 +176,9 @@ public class PuzzleKiosk : MonoBehaviour
 
     private void OnGUI()
     {
+        if (StartScreen.IsShowing || GameOverScreen.IsShowing)
+            return;
+
         if (player == null)
             return;
 

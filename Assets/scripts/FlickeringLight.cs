@@ -8,6 +8,10 @@ public class FlickeringLight : MonoBehaviour
     public float minIntensity = 0f;
     public float maxIntensity = 4.5f;
 
+    [Header("Steady")]
+    // Level held whenever the timer is running normally.
+    public float steadyIntensity = 2.6f;
+
     [Header("Flicker")]
     public float flickerSpeed = 3.5f;
     public float smoothing = 20f;
@@ -32,6 +36,17 @@ public class FlickeringLight : MonoBehaviour
 
     private void Update()
     {
+        // Lamps only misbehave while the clock is burning down fast. The rest of the
+        // time they hold a steady level so the station reads as normal.
+        bool panic = GameTimer.Instance != null && GameTimer.Instance.IsDraining;
+
+        if (!panic)
+        {
+            blackoutTimer = 0f;
+            light.intensity = Mathf.Lerp(light.intensity, steadyIntensity, Time.deltaTime * smoothing);
+            return;
+        }
+
         float target;
 
         if (blackoutTimer > 0f)

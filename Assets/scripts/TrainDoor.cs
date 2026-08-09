@@ -63,6 +63,9 @@ public class TrainDoor : MonoBehaviour
     public void Toggle()
     {
         isOpen = !isOpen;
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayDoorChime();
     }
 
     private void Update()

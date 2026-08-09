@@ -55,6 +55,9 @@ public class TicketPickup : MonoBehaviour
 
     private void OnGUI()
     {
+        if (StartScreen.IsShowing || GameOverScreen.IsShowing)
+            return;
+
         if (!PlayerInRange())
             return;
 
